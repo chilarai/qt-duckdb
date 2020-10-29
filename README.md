@@ -1,4 +1,4 @@
-# QT-DuckDB CRUD operations
+# QT-DuckDB InMemory CRUD operations
 
 This project demostrates how you can use the **Qt framework** to connect to [**DuckDB**](https://duckdb.org/).
 
