@@ -1,0 +1,1 @@
+# QT-DuckDB CRUD operations
