@@ -5,10 +5,7 @@
 *.a
 *.la
 *.lai
-*.so
 *.so.*
-*.dll
-*.dylib
 
 # Qt-es
 object_script.*.Release
