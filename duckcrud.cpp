@@ -52,8 +52,6 @@ QStringList DuckCRUD::readTableData()
 void DuckCRUD::updateData(int id)
 {
     QString name = "Replaced name" + QString::number(id);
-//    auto result = con.Query("UPDATE people SET name = '"+ name.toStdString() +"' WHERE id = " + QString::number(id).toStdString());
-
     auto prepared = con.Prepare("UPDATE people SET name = ? WHERE id = ?");
     prepared->Execute(name, id);
 }
