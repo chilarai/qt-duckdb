@@ -14,8 +14,8 @@ public:
 
     Q_INVOKABLE void insertData();
     Q_INVOKABLE QStringList readTableData();
-    Q_INVOKABLE void updateData(int id);
-    Q_INVOKABLE void deleteData(int id);
+    Q_INVOKABLE void updateData();
+    Q_INVOKABLE void deleteData();
 
 signals:
     void dataUpdated();

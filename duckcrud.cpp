@@ -18,7 +18,9 @@ void DuckCRUD::insertData()
 
     counter++;
     duckdb::Appender appender(con, "people");
-    appender.AppendRow(counter, "Test" + QString::number(counter));
+
+    QString newData = "Test" + QString::number(counter);
+    appender.AppendRow(counter, newData.toUtf8().constData());
     appender.Close();
 
     emit dataUpdated();
@@ -51,19 +53,20 @@ QStringList DuckCRUD::readTableData()
     return output;
 }
 
-void DuckCRUD::updateData(int id)
+void DuckCRUD::updateData()
 {
     // Update date using prepared statement
 
-    QString name = "Replaced name" + QString::number(id);
+    QString name = "Replaced name" + QString::number(counter);
     auto prepared = con.Prepare("UPDATE people SET name = ? WHERE id = ?");
-    prepared->Execute(name, id);
+    auto prep = prepared->Execute(counter, name.toUtf8().constData());
 
     emit dataUpdated();
 }
 
-void DuckCRUD::deleteData(int id)
+void DuckCRUD::deleteData()
 {
-    auto result = con.Query("DELETE FROM people WHERE id = " + QString::number(id).toStdString());
+    auto result = con.Query("DELETE FROM people WHERE id = " + QString::number(counter).toStdString());
+    counter--;
     emit dataUpdated();
 }

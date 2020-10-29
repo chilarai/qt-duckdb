@@ -1,7 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
-import Qt.labs.platform 1.0
-
+import QtQuick.Controls 2.5
+import QtQuick.Layouts 1.3
 
 Window {
     visible: true
@@ -13,19 +13,94 @@ Window {
     property int textHeight: 20
 
 
-    // OnComponent load complete, fetch default data from duckCRUD
-    Component.onCompleted: {
+    // Signal received on any change in data (insert/update/delete)
+    Connections{
+        target: DuckCRUD
+
+        function onDataUpdated(){
+            loadData()
+        }
+    }
+
+    // OnComponent load complete, fetch default data from DuckCRUD
+    Component.onCompleted: loadData()
+
+
+    function loadData(){
         listModel = DuckCRUD.readTableData()
         dbDataListView.model = listModel
         dbDataListView.height = listModel.length * textHeight
     }
 
+
+    // Add new test data to the list
+    function addData(){
+        DuckCRUD.insertData()
+    }
+
+    // Delete the last data from the last
+    function deleteData(){
+        DuckCRUD.deleteData()
+    }
+
+    // Update the last data from the list
+    function updateData(){
+        DuckCRUD.updateData()
+    }
+
+
+
+    Row{
+        id: btnList
+        height:50
+        width: parent.width
+        spacing: 1
+
+        Button{
+            width: btnList.width / 3
+            Text {
+                id: addDataBtn
+                text: qsTr("Add Data")
+                anchors.centerIn: parent
+            }
+
+            // Will add a new test data
+            onClicked: addData()
+        }
+
+        Button{
+            width: btnList.width / 3
+            Text {
+                id: deleteDataBtn
+                text: qsTr("Delete Data")
+                anchors.centerIn: parent
+            }
+
+            // Will delete the last data
+            onClicked: deleteData()
+        }
+
+        Button{
+            width: btnList.width / 3
+            Text {
+                id: updateDataBtn
+                text: qsTr("Update Data")
+                anchors.centerIn: parent
+            }
+
+            // Will update the last data
+            onClicked: updateData()
+        }
+    }
+
     ListView{
         id: dbDataListView
+        anchors.top: btnList.bottom
 
         delegate:Text{
             text: modelData
             height: textHeight
         }
     }
+
 }

@@ -41,4 +41,4 @@ win32: LIBS += $$PWD/lduckdb.dll
 INCLUDEPATH += $$PWD/.
 DEPENDPATH += $$PWD/.
 
-QMAKE_TARGET_BUNDLE_PREFIX = com.chilarai.test
+#QMAKE_TARGET_BUNDLE_PREFIX = com.chilarai.test

@@ -2,7 +2,7 @@
 
 This project demostrates how you can use the **Qt framework** to connect to [**DuckDB**](https://duckdb.org/).
 
-DuckDB is an embeddable SQL OLAP database management system and comes in very handy to handle Analytical queries as its a columnar database.
+DuckDB is an embeddable SQL OLAP database management system and comes in very handy to handle Analytical queries.
 
 ## Installation
 
