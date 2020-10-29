@@ -18,6 +18,7 @@ public:
     Q_INVOKABLE void deleteData(int id);
 
 signals:
+    void dataUpdated();
 
 private:
     duckdb::DuckDB db;
