@@ -33,22 +33,6 @@ Window {
     }
 
 
-    // Add new test data to the list
-    function addData(){
-        DuckCRUD.insertData()
-    }
-
-    // Delete the last data from the last
-    function deleteData(){
-        DuckCRUD.deleteData()
-    }
-
-    // Update the last data from the list
-    function updateData(){
-        DuckCRUD.updateData()
-    }
-
-
 
     Row{
         id: btnList
@@ -65,7 +49,7 @@ Window {
             }
 
             // Will add a new test data
-            onClicked: addData()
+            onClicked: DuckCRUD.insertData()
         }
 
         Button{
@@ -77,7 +61,7 @@ Window {
             }
 
             // Will delete the last data
-            onClicked: deleteData()
+            onClicked: DuckCRUD.deleteData()
         }
 
         Button{
@@ -89,7 +73,7 @@ Window {
             }
 
             // Will update the last data
-            onClicked: updateData()
+            onClicked: DuckCRUD.updateData()
         }
     }
 
