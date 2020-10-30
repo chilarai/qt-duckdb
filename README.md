@@ -33,3 +33,7 @@ The CRUD related functions are described in `DuckCRUD` class. All the methods ar
 ## Note:
 
 Please feel free to modify the project if you think any meaningful feature can be added
+
+## Links
+
+1. https://duckdb.org/
