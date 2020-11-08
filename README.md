@@ -37,3 +37,4 @@ Please feel free to modify the project if you think any meaningful feature can b
 ## Links
 
 1. https://duckdb.org/
+2. Blog: https://dev.to/chilarai/inmemory-columnar-database-duckdb-integration-with-qt-for-data-analytics-3nej

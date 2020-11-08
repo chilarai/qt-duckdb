@@ -11,6 +11,7 @@ Window {
 
     property var listModel : []
     property int textHeight: 20
+    property int btnCount: 4
 
 
     // Signal received on any change in data (insert/update/delete)
@@ -41,7 +42,7 @@ Window {
         spacing: 1
 
         Button{
-            width: btnList.width / 3
+            width: btnList.width / btnCount
             Text {
                 id: addDataBtn
                 text: qsTr("Add Data")
@@ -53,7 +54,7 @@ Window {
         }
 
         Button{
-            width: btnList.width / 3
+            width: btnList.width / btnCount
             Text {
                 id: deleteDataBtn
                 text: qsTr("Delete Data")
@@ -65,7 +66,7 @@ Window {
         }
 
         Button{
-            width: btnList.width / 3
+            width: btnList.width / btnCount
             Text {
                 id: updateDataBtn
                 text: qsTr("Update Data")
@@ -74,6 +75,18 @@ Window {
 
             // Will update the last data
             onClicked: DuckCRUD.updateData()
+        }
+
+        Button{
+            width: btnList.width / btnCount
+            Text {
+                id: readCsv
+                text: qsTr("Read CSV")
+                anchors.centerIn: parent
+            }
+
+            // Will read csv from an absolute path
+            onClicked: DuckCRUD.processCsv()
         }
     }
 

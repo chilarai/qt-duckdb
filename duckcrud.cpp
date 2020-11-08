@@ -7,6 +7,7 @@ DuckCRUD::DuckCRUD(QObject *parent) : QObject(parent),
     // Create a table in constructor and insert some default values
 
     con.Query("CREATE TABLE people(id INTEGER, name VARCHAR)");
+    con.Query("CREATE TABLE test");
     con.Query("INSERT INTO people VALUES (0,'Mark'), (1, 'Hannes')");
 }
 
@@ -58,8 +59,8 @@ void DuckCRUD::updateData()
     // Update date using prepared statement
 
     QString name = "Replaced name" + QString::number(counter);
-    auto prepared = con.Prepare("UPDATE people SET name = ? WHERE id = ?");
-    auto prep = prepared->Execute(counter, name.toUtf8().constData());
+    auto prepared = con.Prepare("UPDATE people SET name = $1 WHERE id = $2");
+    auto prep = prepared->Execute(name.toUtf8().constData(), counter);
 
     emit dataUpdated();
 }
@@ -69,4 +70,17 @@ void DuckCRUD::deleteData()
     auto result = con.Query("DELETE FROM people WHERE id = " + QString::number(counter).toStdString());
     counter--;
     emit dataUpdated();
+}
+
+void DuckCRUD::processCsv()
+{
+    QElapsedTimer timer;
+    timer.start();
+
+    // I tested on Macbook Air Early 2015, i5, 4gb with 1.5GB file
+    // It takes about 30 seconds
+    auto result = con.Query("CREATE TABLE t1 AS SELECT * FROM read_csv_auto ('/Abosolute/Path/To/CSV/File.csv')");
+    result->Print();
+
+    qDebug() << "The slow operation took" << timer.elapsed() << "milliseconds";
 }

@@ -2,6 +2,7 @@
 #define DUCKCRUD_H
 
 #include <QObject>
+#include <QElapsedTimer>
 #include <QDebug>
 
 #include "duckdb.hpp"
@@ -17,8 +18,12 @@ public:
     Q_INVOKABLE void updateData();
     Q_INVOKABLE void deleteData();
 
+    // Process Bulk data
+    Q_INVOKABLE void processCsv();
+
 signals:
     void dataUpdated();
+    void csvReadComplete(QString time);
 
 private:
     duckdb::DuckDB db;
