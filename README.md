@@ -14,10 +14,12 @@ You can find the required binaries here: https://duckdb.org/docs/installation/
 
 1. Copy the `libduckdb.dylib` & `duckdb.hpp` files in the Qt project root.
 
-2. Adjust the `.pro` file to add the library. The following line needs to be added in the file for **Mac**
+2. Adjust the `.pro` file to add the library. The following line needs to be added in the file for **Mac** & **Windows**. On Windows remember to put the `duckdb.dll` file inside the folder where the executable is generated and the `duckdb.lib` inside the project path as mentioned in `.pro` file
 
 ```
 macx: LIBS += -L$$PWD/./ -lduckdb
+win32: LIBS += $$PWD/duckdb.lib
+
 ```
 
 The path can be adjusted in **-L\$\$PWD/./**.
