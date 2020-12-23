@@ -36,7 +36,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 # DuckDB library paths
 macx: LIBS += -L$$PWD/./ -lduckdb
-win32: LIBS += $$PWD/duckdb.dll
+win32: LIBS += $$PWD/duckdb.lib
 
 INCLUDEPATH += $$PWD/.
 DEPENDPATH += $$PWD/.
