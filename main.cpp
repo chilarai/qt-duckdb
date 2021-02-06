@@ -5,6 +5,7 @@
 #include <QDebug>
 
 #include "duckcrud.h"
+#include "childcrud.h"
 
 int main(int argc, char *argv[])
 {
@@ -15,8 +16,11 @@ int main(int argc, char *argv[])
 
     // Initialize DuckCRUD object
     // And set context for QML
-    DuckCRUD duckCRUD;
-    engine.rootContext()->setContextProperty("DuckCRUD", &duckCRUD);
+    DuckCRUD *duckCRUD = new DuckCRUD();
+    ChildCRUD *childCRUD = new ChildCRUD(duckCRUD);
+
+    engine.rootContext()->setContextProperty("DuckCRUD", duckCRUD);
+    engine.rootContext()->setContextProperty("ChildCRUD", childCRUD);
 
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));

@@ -1,3 +1,8 @@
+// ===============================================
+// DuckCRUD
+// Sample implementation of CRUD with DuckDB & QT
+// ===============================================
+
 #ifndef DUCKCRUD_H
 #define DUCKCRUD_H
 

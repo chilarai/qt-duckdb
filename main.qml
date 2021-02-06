@@ -11,7 +11,7 @@ Window {
 
     property var listModel : []
     property int textHeight: 20
-    property int btnCount: 4
+    property int btnCount: 5
 
 
     // Signal received on any change in data (insert/update/delete)
@@ -87,6 +87,18 @@ Window {
 
             // Will read csv from an absolute path
             onClicked: DuckCRUD.processCsv()
+        }
+
+        Button{
+            width: btnList.width / btnCount
+            Text {
+                id: childClassCall
+                text: qsTr("Debug From ChildClass")
+                anchors.centerIn: parent
+            }
+
+            // Will read csv from an absolute path
+            onClicked: ChildCRUD.callChild()
         }
     }
 
