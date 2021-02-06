@@ -7,6 +7,10 @@
 #include "duckcrud.h"
 #include "childcrud.h"
 
+
+//duckdb::DuckDB DuckCRUD::db(nullptr);
+//duckdb::Connection DuckCRUD::con(db);
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -16,7 +20,7 @@ int main(int argc, char *argv[])
 
     // Initialize DuckCRUD object
     // And set context for QML
-    DuckCRUD *duckCRUD = new DuckCRUD();
+    DuckCRUD *duckCRUD = new DuckCRUD;
     ChildCRUD *childCRUD = new ChildCRUD(duckCRUD);
 
     engine.rootContext()->setContextProperty("DuckCRUD", duckCRUD);

@@ -26,14 +26,20 @@ public:
     // Process Bulk data
     Q_INVOKABLE void processCsv();
 
+    // Vars
+    //    static duckdb::DuckDB db;
+    //    static duckdb::Connection con;
+    duckdb::DuckDB db;
+    duckdb::Connection con;
+    int counter;
+
 signals:
     void dataUpdated();
     void csvReadComplete(QString time);
 
 private:
-    duckdb::DuckDB db;
-    duckdb::Connection con;
-    int counter;
+
+
 
 };
 

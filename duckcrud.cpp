@@ -2,7 +2,9 @@
 
 DuckCRUD::DuckCRUD(QObject *parent) : QObject(parent),
     db(nullptr), con(db), counter(1)
+//    counter(1)
 {
+    qDebug() << "called";
 
     // Create a table in constructor and insert some default values
 
